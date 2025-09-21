@@ -3,6 +3,9 @@
   padding: 1rem;
   border-bottom: 1px solid #eaeaea;
   background-color: var(--background);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .nav {

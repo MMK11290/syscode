@@ -1,3 +1,4 @@
+// src/layout/Navbar.tsx
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Search from '../components/Search';
@@ -43,19 +44,6 @@ const Navbar = () => {
           </button>
         </div>
       </nav>
-
-      {/* --- Mobile Dropdown Menu --- */}
-      {isMobileMenuOpen && (
-        <div className={styles.mobileMenu}>
-          <Link href="/" className={styles.navLink}>
-            All Posts
-          </Link>
-          <div className={styles.searchContainer}>
-            <FiSearch className={styles.searchIcon} size={20} />
-            <Search />
-          </div>
-        </div>
-      )}
     </header>
   );
 };
