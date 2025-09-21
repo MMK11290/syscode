@@ -1,23 +1,46 @@
 // src/layout/Navbar.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Search from '../components/Search';
 import ThemeToggle from '../components/ThemeToggle';
+import styles from './Navbar.module.css';
+import { FiMenu, FiX, FiSearch } from 'react-icons/fi'; // Import FiSearch
 
 const Navbar = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
-    <header style={{ padding: '1rem', borderBottom: '1px solid #eaeaea' }}>
-      <nav style={{ maxWidth: 900, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Link href="/" style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bold' }}>
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <Link href="/" className={styles.logo}>
           SysCode
         </Link>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <div style={{ width: '250px' }}>
+        <div className={styles.desktopMenu}>
+          <div className={styles.searchContainer}>
+            <FiSearch className={styles.searchIcon} size={20} />
             <Search />
           </div>
           <ThemeToggle />
         </div>
+        <div className={styles.mobileMenuButton}>
+          <button onClick={toggleMobileMenu} aria-label="Toggle menu">
+            {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          </button>
+        </div>
       </nav>
+      {isMobileMenuOpen && (
+        <div className={styles.mobileMenu}>
+          <div className={styles.searchContainer}>
+            <FiSearch className={styles.searchIcon} size={20} />
+            <Search />
+          </div>
+          <ThemeToggle />
+        </div>
+      )}
     </header>
   );
 };

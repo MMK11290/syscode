@@ -1,0 +1,79 @@
+/* src/layout/Navbar.module.css */
+.header {
+  padding: 1rem;
+  border-bottom: 1px solid #eaeaea;
+  background-color: var(--background);
+}
+
+.nav {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.desktopMenu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.searchContainer {
+  position: relative;
+  width: 250px;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  z-index: 10;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--foreground);
+}
+
+.mobileMenu {
+  display: none;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .desktopMenu {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: block;
+  }
+
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-top: 1px solid #eaeaea;
+  }
+  
+  .searchContainer {
+      width: 100%;
+  }
+}

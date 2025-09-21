@@ -1,0 +1,95 @@
+---
+title: "Linux Tips"
+description: "Some useful Linux command-line tips."
+keywords: ["linux", "tips", "terminal"]
+canonicalUrl: "https://example.com/linux/tips"
+---
+
+# Linux Tips
+
+Here are some helpful Linux tips for command-line efficiency:
+
+```bash
+# List files in long format with human-readable sizes
+ls -lh
+```
+
+# Nano Text Editor Cheat Sheet
+
+Nano is a simple and user-friendly text editor for the command line. Here’s a cheat sheet to help you quickly navigate and use Nano efficiently.
+
+## Basic Commands
+
+| Command | Description |
+|---------|-------------|
+| `nano [filename]` | Open or create a file in Nano. |
+| `nano` | Open Nano with a blank buffer. |
+| `nano +[line_number] [filename]` | Open a file at a specific line number. |
+
+## Navigating the Text
+
+| Keybinding | Action |
+|------------|--------|
+| `Ctrl + A` | Move to the beginning of the line. |
+| `Ctrl + E` | Move to the end of the line. |
+| `Ctrl + Y` | Scroll up one screen. |
+| `Ctrl + V` | Scroll down one screen. |
+| `Ctrl + W` | Search for text. |
+| `Ctrl + \` | Search and replace text. |
+| `Alt + ]` | Move to the next matching bracket. |
+| `Alt + [` | Move to the previous matching bracket. |
+| `Ctrl + C` | Show the cursor's current position. |
+
+## Editing Text
+
+| Keybinding | Action |
+|------------|--------|
+| `Ctrl + K` | Cut the current line. |
+| `Ctrl + U` | Paste the last cut text. |
+| `Ctrl + J` | Justify (format) the current paragraph. |
+| `Ctrl + T` | Spell check the text. |
+| `Ctrl + W` | Find text within the file. |
+| `Alt + 6` | Copy the current line. |
+| `Ctrl + ^` | Select text (start with Ctrl + ^, then navigate). |
+
+## File Operations
+
+| Keybinding | Action |
+|------------|--------|
+| `Ctrl + O` | Save the file. |
+| `Ctrl + X` | Exit Nano. |
+| `Ctrl + R` | Insert another file into the current one. |
+| `Ctrl + T` | Open the file browser (when saving). |
+
+## Working with Multiple Buffers
+
+| Keybinding | Action |
+|------------|--------|
+| `Ctrl + R` | Insert content from another file. |
+| `Ctrl + X` | Close the current buffer. |
+| `Ctrl + ^` | Switch between buffers. |
+
+## Nano Configuration Options
+
+| Keybinding | Action |
+|------------|--------|
+| `Alt + L` | Enable/disable line numbers. |
+| `Alt + X` | Enable/disable soft wrapping. |
+| `Alt + U` | Undo the last action. |
+| `Alt + E` | Redo the last undone action. |
+| `Ctrl + G` | Display help screen. |
+
+## Tips and Shortcuts
+
+- **Search and Replace:** Press `Ctrl + \` to search and replace text interactively.  
+- **Undo/Redo:** Use `Alt + U` (undo) and `Alt + E` (redo).  
+- **View Line Numbers:** Enable with `Alt + L`.  
+- **Syntax Highlighting:** Enable in `/etc/nanorc` by uncommenting syntax include files.  
+- **Backup Files:** Nano creates backup files by appending a `~` to the filename when enabled.  
+
+## Exit Commands
+
+| Keybinding | Action |
+|------------|--------|
+| `Ctrl + X` | Exit Nano (prompts to save if unsaved). |
+| `Ctrl + C` | Cancel the current command. |

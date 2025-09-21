@@ -1,0 +1,12 @@
+/* src/layout/Footer.module.css */
+.footer {
+  padding: 1rem;
+  border-top: 1px solid #eaeaea;
+  margin-top: 2rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}

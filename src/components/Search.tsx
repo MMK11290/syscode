@@ -4,6 +4,7 @@ import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import Fuse from 'fuse.js';
 import Link from 'next/link';
 import { SearchItem } from '@/lib/search';
+import styles from './Search.module.css';
 
 /**
  * Lightweight local types to avoid "Fuse only refers to a type" TS errors.
@@ -136,15 +137,15 @@ const Search: React.FC<SearchProps> = ({ fuseOptions = defaultFuseOptions }) => 
         placeholder="Search posts..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        style={{ width: '100%', padding: '0.5em' }}
+        className={styles.searchInput} // Use a CSS class instead of inline style
       />
       {query && results.length === 0 && <p>No results found.</p>}
-      <ul style={{ listStyle: 'none', padding: 0 }}>
+      <ul className={styles.resultsList}>
         {results.map((result, idx) => {
           const slugPath = result.item.slug.length ? '/' + result.item.slug.join('/') : '/';
           const key = result.item.slug.join('-') || result.item.title || `res-${idx}`;
           return (
-            <li key={key} style={{ margin: '1em 0' }}>
+            <li key={key} className={styles.resultItem}>
               <Link href={slugPath}>
                 <h3>{result.item.title}</h3>
               </Link>

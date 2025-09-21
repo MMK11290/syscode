@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "generate:index": "tsx src/scripts/generate-search-index.ts",
-    "prebuild": "npm run generate:index",
+    "generate:sitemap": "tsx src/scripts/generate-sitemap.ts",
+    "prebuild": "npm run generate:index && npm run generate:sitemap",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint"
