@@ -3,7 +3,6 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import type { GetStaticProps, NextPage } from 'next';
-import Layout from '../components/Layout';
 import Search from '../components/Search';
 import type { FrontMatter } from '../lib/mdx.server';
 import { getAllPosts } from '../lib/mdx.server';
@@ -44,7 +43,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 const IndexPage: NextPage<Props> = ({ posts }) => {
   return (
-    <Layout>
+    <>
       <Head>
         <title>Docs / Tips — Sys Code</title>
         <meta name="description" content="A collection of system tips and how-tos (MDX-based)." />
@@ -77,10 +76,8 @@ const IndexPage: NextPage<Props> = ({ posts }) => {
 
                 return (
                   <li key={key} style={{ padding: '0.75rem 0', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
-                    <Link href={slugPath}>
-                      <a style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <h3 style={{ margin: '0 0 .25rem 0' }}>{title}</h3>
-                      </a>
+                    <Link href={slugPath} style={{ textDecoration: 'none', color: 'inherit' }}>
+                      <h3 style={{ margin: '0 0 .25rem 0' }}>{title}</h3>
                     </Link>
                     {desc ? (
                       <p style={{ margin: 0, color: '#444' }}>{desc}</p>
@@ -94,7 +91,7 @@ const IndexPage: NextPage<Props> = ({ posts }) => {
           )}
         </section>
       </main>
-    </Layout>
+    </>
   );
 };
 
