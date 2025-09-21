@@ -1,0 +1,85 @@
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 2rem auto;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--prose-borders);
+  border-radius: 8px;
+  padding: 1rem;
+  align-self: flex-start;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* ... other styles from previous step ... */
+.sidebarTitle, .sidebar nav ul, .sidebar nav li a, .mainContent, .activeLink {
+  /* Assumes these styles are already here */
+}
+[data-theme='dark'] .sidebar {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.menuButton, .overlay {
+  display: none;
+}
+
+/* --- Mobile styles --- */
+@media (max-width: 768px) {
+  .container {
+    padding-top: 4rem;
+  }
+  
+  .menuButton {
+    display: flex;
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 1001;
+    background: var(--background);
+    border: 1px solid var(--prose-borders);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--foreground);
+  }
+
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    /* 1. Hide the sidebar off-screen by default on mobile */
+    transform: translateX(-100%);
+    z-index: 1000;
+    overflow-y: auto;
+    background: var(--background);
+    border-right: 1px solid var(--prose-borders);
+    border-radius: 0;
+  }
+
+  /* 2. When the hamburger is clicked, this class is added */
+  .sidebarOpen {
+    /* 3. This slides the sidebar back into view */
+    transform: translateX(0);
+  }
+
+  .overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+}

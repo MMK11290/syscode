@@ -23,7 +23,18 @@
 .desktopMenu {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem; /* Increased gap for the new link */
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--foreground);
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: #0070f3;
 }
 
 .searchContainer {
@@ -41,26 +52,34 @@
   pointer-events: none;
 }
 
-.mobileMenuButton {
+/* Container for mobile button and theme toggle */
+.mobileControls {
   display: none;
+}
+
+.mobileMenuButton {
   background: none;
   border: none;
   cursor: pointer;
   color: var(--foreground);
+  display: flex; /* Helps align the icon */
+  align-items: center;
 }
 
 .mobileMenu {
   display: none;
 }
 
-/* Mobile styles */
+/* --- Mobile styles --- */
 @media (max-width: 768px) {
   .desktopMenu {
     display: none;
   }
 
-  .mobileMenuButton {
-    display: block;
+  .mobileControls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .mobileMenu {
@@ -72,8 +91,8 @@
     margin-top: 1rem;
     border-top: 1px solid #eaeaea;
   }
-  
+
   .searchContainer {
-      width: 100%;
+    width: 100%;
   }
 }
