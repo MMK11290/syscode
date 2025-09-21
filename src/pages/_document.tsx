@@ -1,29 +1,42 @@
-// pages/_document.tsx
-// This file is for Font, Meta Tags, Preload scripts like Analyts
+import type { Metadata } from 'next';
 import { Html, Head, Main, NextScript } from "next/document";
+
+// Define metadata using the Metadata type
+export const metadata: Metadata = {
+  title: 'Syscode',
+  description: 'Cheatsheets, tips, and tricks for Linux, Windows, and system optimization.',
+  keywords: ['Linux cheatsheet', 'Windows tweaks', 'Syscode', 'system tips', 'programming', 'optimization'],
+  authors: [{ name: 'Syscode' }],
+  openGraph: {
+    title: 'Syscode',
+    description: 'Explore cheatsheets, tips, and tricks for Linux and Windows on Syscode.',
+    type: 'website',
+    url: 'https://syscode.pages.dev/',
+    images: [
+      {
+        url: 'https://syscode.pages.dev/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Syscode - System tips',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Syscode',
+    description: 'Explore cheatsheets, tips, and tricks for Linux and Windows on Syscode.',
+    images: ['https://syscode.pages.dev/og-image.png'],
+  },
+  viewport: 'width=device-width, initial-scale=1',
+  icons: {
+    icon: '/favicon.ico',
+  },
+};
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* Meta tags for SEO */}
-        <meta charSet="utf-8" />
-        <meta name="description" content="Syscode - Cheatsheets, tips, and tricks for Linux, Windows, and system optimization." />
-        <meta name="keywords" content="Linux cheatsheet, Windows tweaks, Syscode, system tips, programming, optimization" />
-        <meta name="author" content="Syscode" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#0f172a" />
-
-        {/* Open Graph / Social sharing */}
-        <meta property="og:title" content="Syscode" />
-        <meta property="og:description" content="Explore cheatsheets, tips, and tricks for Linux and Windows on Syscode." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://syscode.com" />
-        <meta property="og:image" content="https://syscode.com/og-image.png" />
-
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" />
-
         {/* Fonts (Inter for English text) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />

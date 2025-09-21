@@ -51,7 +51,7 @@ const IndexPage: NextPage<Props> = ({ posts }) => {
 
       <main style={{ maxWidth: 900, margin: '2rem auto', padding: '0 1rem' }}>
         <header style={{ marginBottom: '1.5rem' }}>
-          <h1 style={{ margin: 0, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}>Things Everyone Should Know — Index</h1>
+          <h1 style={{ margin: 0, fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}>Things Everyone Should Know</h1>
           <p style={{ marginTop: '.5rem', color: '#555' }}>
             Browse guides and tips. Use the search box below to quickly find articles.
           </p>

@@ -1,7 +1,6 @@
 .container {
   display: flex;
   max-width: 1200px;
-  margin: 2rem auto;
   gap: 2rem;
   padding: 0 1rem;
 }
@@ -31,9 +30,6 @@
 
 /* --- Mobile styles --- */
 @media (max-width: 768px) {
-  .container {
-    padding-top: 4rem;
-  }
   
   .menuButton {
     display: flex;
@@ -70,6 +66,12 @@
   .sidebarOpen {
     /* 3. This slides the sidebar back into view */
     transform: translateX(0);
+  }
+
+  .mainContent {
+  flex-grow: 1;
+  /* Add this line to allow horizontal scrolling only on the main content */
+  overflow-x: auto;
   }
 
   .overlay {

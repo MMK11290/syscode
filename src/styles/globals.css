@@ -35,18 +35,10 @@ main {
 }
 
 /* --- Add these styles to fix content overflow --- */
-.prose pre {
-  white-space: pre-wrap; /* Allows long lines to wrap */
-  word-wrap: break-word; /* Breaks long words if necessary */
-  overflow-x: auto;      /* Adds a scrollbar if content is still too wide */
-  max-width: 100%;
-}
-
-.prose table {
-  display: block;
-  max-width: fit-content;
-  overflow-x: auto;
-  white-space: nowrap;
+html, body {
+  /* This prevents the entire page from scrolling horizontally */
+  overflow-x: hidden;
+  width: 100%;
 }
 
 @theme {
