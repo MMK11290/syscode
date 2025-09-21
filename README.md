@@ -1,40 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
-## Getting Started
+---
 
-First, run the development server:
+III: Notes / rationale for a few choices
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **`FrontMatter` interface:** I included the core SEO fields you requested (`title`, `description`, `keywords`, `canonicalUrl`) and allowed arbitrary additional fields using an index signature. If you want more strict fields (e.g., `date: string`) we can extend it.  
+- **`MDXRemoteSerializeResult` type:** I imported the type from `next-mdx-remote`. If your installed version exposes a different type name, swap or fallback to `any`. Using the proper type helps with downstream rendering code.  
+- **`rehype-highlight` plugin typing:** plugin types can sometimes mismatch; I casted it as `any` in a small local array so TypeScript doesn't complain. This keeps strong typing elsewhere while avoiding third-party typing friction.  
+- **Error handling:** `getPostBySlug` throws a clear error if the file doesn't exist — this is deliberate: better to fail fast with a helpful message than produce an obscure ENOENT inside a build process. If you prefer silent fallback, we can return `null` instead.  
+- **No mutable default arrays:** `fileList?: string[]` + `fileList = fileList ?? []` avoids any ambiguous behavior and is safe under strict rules.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+IV: How to use these utilities in Next.js pages
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Example `getStaticPaths`:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+```ts
+// pages/[...slug].tsx (or app router equivalent)
+import { getStaticPathsFromPosts, getPostBySlug } from 'src/lib/mdx';
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+export async function getStaticPaths() {
+  const paths = getStaticPathsFromPosts();
+  return { paths: paths.map(p => ({ params: { slug: p.params.slug } })), fallback: false };
+}
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+export async function getStaticProps({ params }) {
+  const slugArray: string[] = Array.isArray(params.slug) ? params.slug : [params.slug];
+  const post = await getPostBySlug(slugArray);
+  return { props: { post } };
+}
