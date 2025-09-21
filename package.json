@@ -2,10 +2,10 @@
   "name": "sys-code",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
-    "generate:index:build": "tsc src/scripts/generate-search-index.ts --outDir .build && node .build/src/scripts/generate-search-index.js",
-    "generate:index": "npm run generate:index:build",
+    "generate:index": "tsx src/scripts/generate-search-index.ts",
     "prebuild": "npm run generate:index",
     "build": "next build --turbopack",
     "start": "next start",

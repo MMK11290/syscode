@@ -1,7 +1,7 @@
 // src/scripts/generate-search-index.ts
 import { promises as fs } from 'fs';
 import * as path from 'path';
-import { getSearchIndex } from '../lib/search';
+import { getSearchIndex } from '../lib/search.js';
 
 async function generate() {
   try {

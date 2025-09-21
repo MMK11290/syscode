@@ -2,36 +2,45 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "esnext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-
     // مهم برای رفع خطاهای default-import (`export =`) در برخی کتابخانه‌ها
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-
     // برای tsc + ابزارها
     "moduleResolution": "node",
-    "isolatedModules": false,
-    "jsx": "react-jsx",
-
+    "isolatedModules": true,
+    "jsx": "preserve",
     // برای تولید JS وقتی از tsc برای اسکریپت استفاده می‌کنیم
     "noEmit": false,
     "incremental": true,
-
     // مسیرهای کوتاه (مثل @/*)
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
-
     // تایپ‌هایی که لازم داریم در تایپ‌چکینگ در دسترس باشند
-    "types": ["node", "react"],
+    "types": [
+      "node",
+      "react"
+    ],
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
-

@@ -1,7 +1,7 @@
 // src/lib/search.ts
 // Server-side search index builder
-import { getAllMdxFiles, filePathToSlug, contentDirectory, getPlainTextFromMdx } from './mdx.server';
-import fs from 'fs';
+import { getAllMdxFiles, filePathToSlug, contentDirectory, getPlainTextFromMdx } from './mdx.server.js';
+import * as fs from 'fs';
 import * as path from 'path';
 import matter from 'gray-matter';
 import type { FrontMatter } from './mdx.server';

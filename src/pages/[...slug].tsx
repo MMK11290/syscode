@@ -63,7 +63,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return { 
       props: { post },
       // Revalidate at most every hour (optional for static sites with infrequent updates)
-      revalidate: 3600 
     };
   } catch (error) {
     // Handle 404 cases
