@@ -4,7 +4,7 @@ import * as path from 'path';
 import { getAllPosts } from '../lib/mdx.server.js';
 
 // The base URL of your website
-const siteUrl = 'https://your-website-url.com'; // ⚠️ Replace with your actual domain
+const siteUrl = 'https://syscode.pages.dev/'; 
 
 async function generateSitemap() {
   console.log('Generating sitemap...');
